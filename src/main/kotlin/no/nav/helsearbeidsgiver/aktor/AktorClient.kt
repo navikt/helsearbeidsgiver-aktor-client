@@ -14,7 +14,6 @@ open class AktørException(message: String, causedBy: Exception?) : RuntimeExcep
 open class FantIkkeAktørException(causedBy: java.lang.Exception?) : AktørException("Fant ikke aktørId", causedBy)
 open class AktørKallResponseException(statusCode: Int, causedBy: java.lang.Exception?) : AktørException("Kall mot aktørregister for aktørId feiler med http status $statusCode", causedBy)
 
-
 class AktorClient(
     private val tokenConsumer: AccessTokenProvider,
     private val username: String,
