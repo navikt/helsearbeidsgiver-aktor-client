@@ -4,7 +4,6 @@ val ktor_version: String by project
 val kotlin_version: String by project
 val logback_version: String by project
 val mockk_version: String by project
-val githubUsername: String by project
 val githubPassword: String by project
 
 plugins {
@@ -21,8 +20,6 @@ tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "11"
 }
 
-
-
 tasks {
     test {
         useJUnitPlatform()
@@ -33,8 +30,8 @@ repositories {
     mavenCentral()
     maven {
         credentials {
-            username = githubUsername
-            password = githubPassword
+            username = System.getenv("GITHUB_ACTOR")
+            password = System.getenv("GITHUB_TOKEN")
         }
         setUrl("https://maven.pkg.github.com/navikt/helsearbeidsgiver-tokenprovider")
     }
